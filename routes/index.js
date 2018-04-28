@@ -298,10 +298,8 @@ router.post('/upload', function(req,res){
                               res.redirect('mySlides');
                                          
                             });
-                      }
-                                    
-                    });
-
+                      }           
+          });
         }
       });
     }
