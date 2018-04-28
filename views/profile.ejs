@@ -1,1 +1,150 @@
-test
+<!DOCTYPE html>
+<html lang="en-US">
+
+   <% include components/header %>
+
+   <body class="size-1140">
+      <!-- TOP NAV WITH LOGO -->  
+      <header>
+          <% include components/nav %>
+      </header>
+
+      <section>
+        <div id="head" style="background: url(./img/blur.jpg);">
+            <div class="line">
+               <img class="profile-img-profile" src="/img/annon_user.jpg" alt="">
+               <h1> <%= user.username %></h1>
+               <div class="pull-right" style="color: white;">EDIT PROFILE <i class="fa fa-cogs" aria-hidden="true"></i></div>
+            </div>
+             
+         </div>
+
+         <div id="content">
+              <div class="row">
+            
+                  <div class="col-lg-12 col-lg-offset-1">
+                
+                     <div class="col-lg-3">
+                        <label for="username">User Name :</label>
+                        
+                        <input type="text" name="username" value=" <%= user.username %>"></input>
+                     </div>
+                 
+                 
+                     <div class="col-lg-3">
+                        <label for="username">User Name :</label>
+                        <input type="text" name="username" value=" <%= user.username %>"></input>
+                     </div>
+                 
+                 
+                     <div class="col-lg-3">
+                        <label for="username">Created On:</label>
+                        <input type="text" name="username" value=" <%= user.account_created %>"></input>
+                     </div>
+                  
+                  </div>
+                </div>
+            </div>
+           <!-- GALLERY -->
+         <div id="third-block">
+              <div class="row">
+                  <div class="col-lg-10 col-lg-offset-1">
+                        <div class="col-lg-3">Friends</div>
+                        <p class="subtitile">Click on one of your friends profiles to see what they've been up too !
+                        </p>
+
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                             <img src="img/fourth-small.jpg">      
+                              <p class="subtitile">rHenderson
+                              </p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                             <img src="img/fourth-small.jpg">      
+                              <p class="subtitile">gElliot
+                              </p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                             <img src="img/fourth-small.jpg">      
+                              <p class="subtitile">sSmith
+                              </p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                             <img src="img/fourth-small.jpg">      
+                              <p class="subtitile">xX_CoolDoon_44
+                              </p>
+                        </div>
+                   
+                  </div>
+               </div>
+         </div>
+
+            
+
+        
+          <!-- GALLERY -->
+         <div id="third-block">
+            <div class="line">
+               <h2>Courses Enrolled</h2>
+               <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+               </p>
+               <div class="margin">
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/first-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/second-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/third-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/fourth-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+               </div>
+            </div>
+              <div class="line">
+               <h2>My Courses</h2>
+               <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+               </p>
+               <div class="margin">
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/first-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/second-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/third-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+                  <div class="s-12 m-6 l-3">
+                     <img src="img/fourth-small.jpg">      
+                     <p class="subtitile">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+        
+        
+</section>
+
+      <% include components/footer %>
+      <% include components/carScript %>
+    
+   </body>
+
+</html>

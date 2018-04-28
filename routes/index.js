@@ -40,35 +40,57 @@ router.get('/error', function(req, res, next) {
 
 /* GET home page. */
 router.get('/test', function(req, res, next) {
-  res.render('test.ejs', { title: 'Tron_Slide' });
+
+      if(!req.user){
+              res.render('test.ejs', { isLoggedIn: false });
+
+          }else{
+              res.render('test.ejs', { isLoggedIn: true });
+          }
 });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'Tron_Slide' });
+
+          if(!req.user){
+              res.render('index.ejs', { isLoggedIn: false });
+
+          }else{
+              res.render('index.ejs', { isLoggedIn: true });
+          }
 });
 /* GET home page. */
 router.get('/index', function(req, res, next) {
-  res.render('index.ejs', { title: 'Tron_Slide' });
+          if(!req.user){
+              res.render('index.ejs', { isLoggedIn: false });
+
+          }else{
+              res.render('index.ejs', { isLoggedIn: true });
+          }
 });/* GET home page. */
+
 router.get('/home', function(req, res, next) {
-  res.render('index.ejs', { title: 'Tron_Slide' });
+
+          if(!req.user){
+              res.render('index.ejs', { isLoggedIn: false });
+
+          }else{
+              res.render('index.ejs', { isLoggedIn: true });
+          }
+  
 });
+
+
+
+
+
 router.get('/createNew', function(req, res, next) {
-     res.render('createSlide.ejs');
-});
+         if(!req.user){
+              res.render('createSlide.ejs', { isLoggedIn: false });
 
-
-
-router.get('/mySlides', function(req, res, next) {
-
-    var db = req.db;
-    db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
-
-            res.render('mySlides.ejs', {sliders:results});
-            console.log(results);
-
-    });
+          }else{
+              res.render('createSlide.ejs', { isLoggedIn: true });
+          }
 });
 
 
@@ -77,23 +99,52 @@ router.get('/mySlides', function(req, res, next) {
 
 
 router.get('/liveSlides', function(req, res, next) {
-    var db = req.db;
 
-    db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
+            var db = req.db;
+            db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
 
-            res.render('liveSlides.ejs', {sliders:results});
-            console.log(results);
+                      res.render('liveSlides.ejs', {sliders:results,isLoggedIn: true });
+                      console.log(results);
 
-    });
-    
+                      if(!req.user){
+
+                                res.render('liveSlides.ejs', { sliders:results,isLoggedIn: false });
+
+                      }else{
+
+
+                                var db = req.db;
+                                  db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
+
+                                        res.render('liveSlides.ejs', {sliders:results,isLoggedIn: true });
+                                        console.log(results);
+
+                                });
+                                res.render('liveSlides.ejs', { isLoggedIn: true });
+                            
+                      }
+
+            });
+
+      
+
+
+
 });
 
 router.get('/registration', function(req, res, next) {
-     res.render('signup.ejs');
+  if(!req.user){
+              res.render('signup.ejs', { isLoggedIn: false });
+
+  }else{
+
+              res.render('profile.ejs', {user : req.user, isLoggedIn:true });
+  }
+   
 });
 
 router.get('/login', function(req, res, next) {
-     res.render('login.ejs');
+     res.render('login.ejs',{isLoggedIn:false});
 });
 
 router.get('/editSlider', function(req, res, next) {
@@ -104,6 +155,8 @@ router.get('/editSlider', function(req, res, next) {
 router.get('/about', function(req, res, next) {
      res.render('about.ejs');
 });
+
+
 
 
 
@@ -311,7 +364,7 @@ router.post('/upload', function(req,res){
 
   // process the signup form
     router.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/mySlides', // redirect to the secure profile section
+        successRedirect : '/profile', // redirect to the secure profile section
         failureRedirect : '/register', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -324,6 +377,21 @@ router.post('/upload', function(req,res){
         failureFlash : true // allow flash messages
     }));
 
+    router.get('/profile', isLoggedIn, function(req, res) {
+        res.render('profile.ejs', {user : req.user, isLoggedIn:true });
+    });
+
+    router.get('/mySlides', isLoggedIn, function(req, res) {
+  
+         var db = req.db;
+            db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
+
+          
+                    res.render('mySlides.ejs', {sliders:results,isLoggedIn: true,user : req.user});
+                                 
+
+            });
+    });
 
 
 

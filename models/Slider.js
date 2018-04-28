@@ -7,6 +7,7 @@ var sliderSchema = mongoose.Schema({
         description:String,
         createdOn:String,
         noodles:Number,
+        
         costs:[{
             cost_type:String,
             amount:Number,

@@ -1,4 +1,5 @@
- <nav>
+<%if(!isLoggedIn){%>
+<nav>
             <div class="line">
                <div class="top-nav">              
            
@@ -6,9 +7,8 @@
                      <ul class="right top-ul chevron" style="margin-bottom:1px;">
                         <li><a href="https://unademy.io/">Home</a>
                         </li>
-                        <li><a href="./mySlides">My Slides</a>
                         </li>
-                        <li><a href="./liveSlides">View All Slides</a>
+                        <li><a href="./liveSlides">View Slides</a>
                         </li>
                      </ul>
                   </div>
@@ -19,9 +19,9 @@
                   </ul>
                   <div class="top-nav s-12 l-5">
                      <ul class="top-ul chevron">
+
                         <li><a href="./about">About</a>
                         <li><a href="./registration">Sign Up</a>
-   
                         <li><a href="./login">Log In</a>
                 
                      </ul> 
@@ -29,3 +29,48 @@
       </div>
    </div>
 </nav>
+<%}else{%>
+<nav>
+   <div class="line">
+      <div class="top-nav">              
+           
+                  <div class="top-nav s-12 l-5">
+                     <ul class="right top-ul chevron" style="margin-bottom:1px;">
+                        <li><a href="https://unademy.io/">Home</a>
+                        </li>
+                        <li><a href="./profile">My Profile</a>
+                        </li>
+                        <li><a href="./mySlides">My Slides</a>
+                        </li>
+                        <li><a href="./myMail"><b id="mailAmount">0</b> <i class="fa fa-envelope fa-6" aria-hidden="true"></i></a>
+                        </li>
+                     
+
+                     </ul>
+                  </div>
+                  <ul class="s-12 l-2">
+                     <li class="logo hide-s hide-m center">
+                        <img src="./images/logo.png" alt="Udanemy.io" style="margin-left: auto;margin-right: auto;display: block;padding-bottom: 5px;padding-top: 5px;">
+                     </li>
+                  </ul>
+                  <div class="top-nav s-12 l-5">
+                     <ul class="top-ul chevron">
+                           <li><a href="./liveSlides">All Slides</a>
+                        </li>
+                        <li><a href="./about">About</a>
+              
+                        <li><a href="./login">Log Out</a>
+                
+                     </ul> 
+                </div>
+      </div>
+   </div>
+</nav>
+<%}%>
+
+
+
+
+
+
+

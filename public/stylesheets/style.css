@@ -227,15 +227,15 @@
 }
 
 
-.profile-img2
+.profile-img-profile
 {
-    width: 45px;
-    height: 45px;
+    width: 245px;
+    height: 245px;
     margin: 0 auto 10px;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    border-radius: 50%;
+   
 }
 
 
