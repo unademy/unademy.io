@@ -1,0 +1,152 @@
+<section>
+  <form enctype="multipart/form-data" method="post" action="/upload">
+
+         <div id="head" style="background: url(./img/blur.jpg);">
+            <div class="line">
+               <h1>Create Slider</h1>
+            </div>
+         </div>
+      
+      <div  style="padding-top: 40px;padding-bottom: 33px;">
+
+         <div class="line">
+            <div class="margin">
+
+            <div class="panel panel-default reg">
+
+              <div class="panel-header">
+
+                <div class="col-lg-6">
+                <label for="sliderName">Slider Name:</label>
+                <input type='text' class='form-control' id='sliderName' name='sliderName'>
+                </div>
+
+                <div class="col-lg-6">
+                <label >Upload Image</label>
+                      <div class="input-group">
+                          <span class="input-group-btn">
+                              <span class="btn btn-default btn-file">
+                                  Browse… <input type="file" id="imgInp" name='imgInp'>
+                              </span>
+                          </span>
+                          <input type="text" class="form-control" readonly>
+                      </div>
+                </div>
+              </div>
+
+              <div class="panel-body" style="height: 500px;margin-bottom: 20px;">
+                
+                <div class="row">
+
+                  <div class="col-lg-6">
+
+                     <label for="sliderDesc">Description:</label>
+
+                      <textarea class="form-control" rows="10" id="sliderDesc" name="sliderDesc"></textarea>
+
+                          <div class="row" style="padding-top: 15px;">
+                            <div class="col-lg-6">
+                              <label for="sliderName">Cost (Centralized Currency):</label>
+                                <input type="number" class="form-control" id="costAmount" name='centralizedCost' placeholder="FREE">
+                                  <select class="selectpicker" style="margin-top: 5px;" name="centralizedCurrency">
+                                  <option>USD</option>
+                                  <option>EUR</option>
+                                  <option>YEN</option>
+                                  <option>GBP</option>
+                                  <option>CHF</option>
+                                  <option>CAD</option>
+                                  <option>AUD/NZD</option>
+                                  <option>ZAR</option>
+                                  <option>INR</option>
+                                  <option>IQD</option>
+                                </select> 
+                                <p>We recommend you start off with some free classes first !</p>
+                            </div>
+
+                            <div class="col-lg-6">
+
+                              <label for="sliderName">Cost (De-Centralized Currency):</label>
+                                <input type="number" class="form-control" id="costAmount" name='decentralizedCost' placeholder="FREE">
+                               <select class="selectpicker" style="margin-top: 5px;" name='decentralizedCurrency'>
+                                  <option>Bitcoin</option>
+                                  <option>Ethereum</option>
+                                  <option>Ripple</option>
+                                  <option>Bitcoin Cash</option>
+                                  <option>EOS</option>
+                                  <option>Litecoin</option>
+                                  <option>XLM</option>
+                                  <option>ADA</option>
+                                  <option>IOTA</option>
+                                  <option>NEO</option>
+                                  <option>TRON</option>
+                                  <option>BCD</option>
+                                  <option>XMR</option>
+                                  <option>DASH</option>
+                                  <option>XEM</option>
+
+                                </select> 
+
+                            </div>
+
+                              <div class="col-lg-6" style="padding-top: 10px;">
+
+                              <label for="sliderName">Author:</label>
+                                <input type="text" class="form-control" id="author" name='author' value="Anonymous">
+                                  
+                            </div>
+                          </div>
+                        
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <label for="sliderName">Help:</label>
+                                <a href="./help">Click here to learn how to monetize your free Sliders !</a>
+                            </div>
+                          </div>
+
+
+                          
+
+                  </div>
+
+                  <div class="col-lg-6">
+                      <div class="img-box">
+                        <img id='img-upload'/>
+                      </div>
+                  </div>
+
+                </div>
+   
+            </div>
+
+            <div class="panel-footer" style="background-color: black;">
+              <div class="col-lg-12">
+                <button type="submit" class="btn btn-primary btn-lrg hang-" style="background-color: red;font-size: 10px;">Create New Slider</button>
+              </div>
+            </div>      
+        
+           
+            </div>
+         </div>
+
+
+      </div>
+
+
+  </form>   
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

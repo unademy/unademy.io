@@ -1,0 +1,61 @@
+<section>
+         <div id="head" style="background: url(./img/blur.jpg);">
+            <div class="line">
+               <h1>My Slides</h1>
+            </div>
+         </div>
+      
+      <div  style="padding-top: 20px;">
+
+         <div class="line">
+            <div class="margin">
+
+                  <%for(var x=0;x < sliders.length ; x++){%>
+                     <div class="col-lg-4">
+                        <div class="panel panel-slider reg">
+                                     
+                                       <div class="panel-body" style="min-height: 400px;">
+                                             <div class="col-lg-12">
+                                                 <img src="<%= sliders[x].images[0].cloud_meta[0].url %>" width='25' height='25'>
+                                             </div>
+
+                                             <div class="col-lg-12" style="padding-top: 15px;">
+                                                <h5 style="display:inline;color: black;">Building A Course</h5> - <h6 style="display:inline;">normal text goes here</h6>
+                                                <hr>
+                                             </div>
+
+                                             <div class="col-lg-12">
+                                                <img class="profile-img" src="/img/annon_user.jpg"
+                                                   alt="">
+                                                <span>Author - </span>
+                                                <h3 style="color: black;"><a>Annonymous</a></h3>
+                                             </div>
+                                       </div>
+
+                                       <div class="panel-footer" style="background-color: black;">
+                                          <button class="btn btn-primary btn-lrg" style="background-color: red;font-size: 10px;">Preview</button>
+                                       </div>   
+                                    </div>
+                        </div>
+                     </div>
+                  <%}%>
+               
+
+            </div>
+         </div>
+
+
+          <div class="line">
+            <div class="margin">
+            
+            <% include sliderPanel %>      
+            <% include createSliderPanel %>
+
+            </div>
+         </div>
+
+      </div>
+
+
+       
+</section>
