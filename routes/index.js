@@ -100,12 +100,12 @@ router.get('/createNew', function(req, res, next) {
 
 router.get('/liveSlides', function(req, res, next) {
 
+
+
             var db = req.db;
             db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
 
-                      res.render('liveSlides.ejs', {sliders:results,isLoggedIn: true });
-                      console.log(results);
-
+                      
                       if(!req.user){
 
                                 res.render('liveSlides.ejs', { sliders:results,isLoggedIn: false });
