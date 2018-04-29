@@ -25,13 +25,13 @@
                      <div class="col-lg-4">
                         <div class="panel panel-slider reg">
                                      
-                                       <div class="panel-body" style="min-height: 400px;">
+                                       <div class="panel-body" style="height: 420px;">
                                              <div class="col-lg-12">
                                                  <img src="<%= sliders[x].images[0].cloud_meta[0].url %>">
                                              </div>
 
-                                             <div class="col-lg-12" style="padding-top: 15px;">
-                                                <h5 style="display:inline;color: black;">Building A Course</h5> - <h6 style="display:inline;">normal text goes here</h6>
+                                             <div class="col-lg-12" style="padding-top: 15px;max-height: 100px;" >
+                                                <h5 style="display:inline;color: black;"><%= sliders[x].name %></h5> - <h6 style="display:inline;"><%= sliders[x].description %></h6>
                                                 <hr>
                                              </div>
 
@@ -39,12 +39,12 @@
                                                 <img class="profile-img" src="/img/annon_user.jpg"
                                                    alt="">
                                                 <span>Author - </span>
-                                                <h3 style="color: black;"><a>Annonymous</a></h3>
+                                                <h3 style="color: black;"><a><%= sliders[x].author %></a></h3>
                                              </div>
                                        </div>
 
                                        <div class="panel-footer" style="background-color: black;">
-                                          <button class="btn btn-primary btn-lrg" style="background-color: red;font-size: 10px;">Preview</button>
+                                          <button class="btn btn-primary btn-lrg" style="background-color: red;font-size: 10px;">P r e v i e w</button>
                                        </div>   
                                   
                         </div>

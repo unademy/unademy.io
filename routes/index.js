@@ -355,10 +355,14 @@ router.post('/createNewSlider', function(req, res, next) {
     router.get('/mySlides', isLoggedIn, function(req, res) {
   
          var db = req.db;
-            db.collection('sliders').find({},{sort: {courseName: 1}}).toArray(function(err, results){
 
-          
-                    res.render('mySlides.ejs', {sliders:results,isLoggedIn: true,user : req.user});
+            db.collection('sliders').find({author:req.user.username},{sort: {courseName: 1}}).toArray(function(err, results){
+
+                    
+                    console.log(results);
+
+
+                    res.render('mySlides.ejs', { sliders:results, isLoggedIn: true,  user:req.user });
                                  
 
             });
