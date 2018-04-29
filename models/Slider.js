@@ -32,7 +32,8 @@ var sliderSchema = mongoose.Schema({
         	section:String
 
        	}],
-        encap:String
+        encap:String,
+        categories:[]
       
 });
 

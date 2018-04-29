@@ -1,5 +1,5 @@
 <section>
-  <form enctype="multipart/form-data" method="post" action="/upload">
+  <form enctype="multipart/form-data" method="post" action="/createNewSlider">
 
          <div id="head" style="background: url(./img/blur.jpg);">
             <div class="line">
@@ -23,7 +23,7 @@
                           <input type='text' class='form-control' id='sliderName' name='sliderName'>
                         </div>
 
-                <div class="col-lg-5">
+                <div class="col-lg-5 col-lg-offset-1">
                 <label >Upload Image :</label>
                       <div class="input-group">
                           <span class="input-group-btn">
@@ -52,7 +52,7 @@
                           <div class="row" style="padding-top: 15px;">
                             <div class="col-lg-6">
                               <label for="sliderName">Cost (Centralized Currency):</label>
-                                <input type="number" class="form-control" id="costAmount" name='centralizedCost' placeholder="FREE">
+                                <input type="number" class="form-control" id="costAmount" name='centralizedCost' value="0.00">
                                   <select class="selectpicker" style="margin-top: 5px;" name="centralizedCurrency">
                                   <option>USD</option>
                                   <option>EUR</option>
@@ -71,7 +71,7 @@
                             <div class="col-lg-6">
 
                               <label for="sliderName">Cost (De-Centralized Currency):</label>
-                                <input type="number" class="form-control" id="costAmount" name='decentralizedCost' placeholder="FREE">
+                                <input type="number" class="form-control" id="costAmount" name='decentralizedCost' value="0.00">
                                <select class="selectpicker" style="margin-top: 5px;" name='decentralizedCurrency'>
                                   <option>Bitcoin</option>
                                   <option>Ethereum</option>
@@ -96,37 +96,32 @@
                               <div class="col-lg-6" style="padding-top: 10px;">
 
                               <label for="sliderName">Author:</label>
-                                <input type="text" class="form-control" id="author" name='author' value="Anonymous">
+                                <input type="text" class="form-control" id="author" name='author' value="<%= user.username %>">
                                   
                             </div>
                           </div>
-                          <div class="row">
+
+                        <div class="row">
                             <div class="col-lg-6">
+
                               <label for="sliderName">Categories:</label>
-                              <ul>
-                                <li>Test <i class="fa fa-times" aria-hidden="true" style="color: red;"></i></li>
-                                <li>Test <i class="fa fa-times" aria-hidden="true" style="color: red;"></i></li>
-                                <li>Test <i class="fa fa-times" aria-hidden="true" style="color: red;"></i></li>
+                              <ul id='categoryList' name='cats'>
+                            
                               </ul>
 
                               <div class="input-group">
-                    <input type="text" class="form-control" placeholder="New Category">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default">ADD</button>
-                    </span>
-                </div>
+                                  <input type="text" class="form-control" placeholder="New Category" name="catLit" id="catLit">
+                                  <span class="input-group-btn">
+                                      <button type="button" onClick="addCategory();" class="btn btn-default">ADD</button>
+                                  </span>
+                              </div>
+
                             </div>
                           </div>
                           
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <label for="sliderName">Help:</label>
-                                <a href="./help">Click here to learn how to monetize your free Sliders !</a>
-                            </div>
-                          </div>
-
-
                           
+
+
 
                   </div>
 
@@ -164,7 +159,7 @@
 
 
 
-
+<script src="../javascripts/createSlider.js"></script>
 
 
 

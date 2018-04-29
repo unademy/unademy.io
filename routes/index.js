@@ -85,11 +85,12 @@ router.get('/home', function(req, res, next) {
 
 
 router.get('/createNew', function(req, res, next) {
+
          if(!req.user){
               res.render('createSlide.ejs', { isLoggedIn: false });
 
           }else{
-              res.render('createSlide.ejs', { isLoggedIn: true });
+              res.render('createSlide.ejs', { user:req.user, isLoggedIn: true });
           }
 });
 
@@ -176,30 +177,6 @@ router.post('/editSlider', function(req, res){
 
 });
 
-router.post('/createNewSlider', function(req, res, next) {
-          
-      var currentTime = new Date().toLocaleString(); 
-
-      var newSlider = Slider({
-
-        name :req.body.name,
-        description:req.body.description,
-        createdOn:currentTime,
-        noodles:0,
-        author:'annonymous',
-        sliderSections:[],
-        slides:[]
-          
-     });
-     
-      newSlider.save(function(err) {
-      if (err) throw err;
-
-          res.redirect('');
-        
-      });
-}); 
-
 router.post('/addSection', function(req,res){
       
 
@@ -272,21 +249,10 @@ router.get('/upload', function(req, res, next) {
 });
 
 
-router.post('/uploadTwo', function(req,res){
+
+router.post('/createNewSlider', function(req, res, next) {
           
-    if(!req.files){
-      res.send("Please Sumbit A File.");
-    }else{
-      console.log(req.body);
-    }
-    
-      
-});
-
-
-router.post('/upload', function(req,res){
-        
-        if(!req.files){
+       if(!req.files){
           res.send("Please Sumbit A File.");
         }else{
 
@@ -341,7 +307,8 @@ router.post('/upload', function(req,res){
                             videos:[],
                             author:req.body.author,
                             sliderSections:[],
-                            slides:[]
+                            slides:[],
+                            categories:req.body.cats
                                                         
                             });
                           
@@ -357,9 +324,13 @@ router.post('/upload', function(req,res){
       });
     }
   }
-});
 
 
+
+    
+ 
+      
+}); 
 
 
   // process the signup form
