@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+   <% include components/header %>
+
+   <body class="size-1140">
+      <!-- TOP NAV WITH LOGO -->  
+      <header>
+          <% include components/nav %>
+      </header>
+
+      <section>
+
+         <div id="head" style="background: url(./img/blur.jpg);">
+            <div class="line">
+               <h1><%=slider.name %> <b style="color: blue;">Demo</b></h1>
+            
+            </div>
+         </div>
+      
+      <div  style="padding-top: 20px;">
+
+         <div class="line">
+            <div class="margin">
+
+               <div class="col-lg-12">
+
+                  <div class="panel with-nav-tabs panel-default" style="border: 1;">
+                           
+                     <div class="panel-header">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                 <div class="row">
+                                    
+                                    <div class="col-lg-12">
+                                       <div class="col-lg-8"><ul class="nav navbar-nav" id='sectionList'>
+
+                                      <li class="active"><a href="#sec0" data-toggle="tab">Introduction</a></li>
+
+                                       <%if(slider.sliderSections.length > 0){%>
+                                         
+                                
+                                          <% for(var r=1; r < slider.sliderSections.length; r++) {%>
+                                       
+                                            <li><a href="#sec<%=r%>" data-toggle="tab"><%= slider.sliderSections[r]%></a></li>
+
+                                         <%}%>
+
+                                        <%}%>
+
+
+                                     
+                                
+                                    </ul>
+                                 </div>
+
+                                       <div class="col-lg-4" style="padding-top: 8px;">   
+                                          <ul class="nav navbar-nav navbar-right" >
+                                            <li class="active">
+                                                <div class="input-group">
+                                                   <input type="text" class="form-control" placeholder="New Section" id='sectionName' name='sectionName'>
+                                                   <span class="input-group-btn">
+                                                      <button type="button" onClick="addSection('<%= slider.id %>');" class="btn btn-default">ADD</button>
+                                                    </span>
+                                               </div>
+                                            </li>
+                                          </ul>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                       
+                         
+
+                               
+
+                              </div><!-- /.navbar-collapse -->
+                           </div><!-- /.container-fluid -->
+                        </nav> 
+               </div><!-- /.end panel-header -->
+
+
+               <div class="panel-body" style="border: 1;height: 525px;overflow: none;"><!--begining outer body 1-->
+
+                  <div class="tab-content" id='tabContent'>
+
+                     <div class="tab-pane fade in active" id="sec0">
+                        <div class="col-lg-12">
+                           <ul style="list-style: none;padding-left:0;">
+
+                                      <li><!--First LI always intro-->
+                                          <div class="panel panel-slider">
+                                             <div class="panel-header">
+                                          
+                                             <div class="col-lg-12">
+                                                <h1 style="color:black;">Introduction</h1>
+                                             </div>
+
+                                             </div>
+                                                   <div class="panel-body" style="height: 450px;">
+                                                   <div class="col-lg-12">
+                                                       <div class="col-lg-6 center-block" style="float: none;">
+                                                          <img src="<%= slider.images[0].cloud_meta[0].url %>">
+                                                       </div>
+                                                   </div>
+                                                      <div class="col-lg-12" style="padding-top: 10px; font-size: 15px;">
+                                                         <p><%= slider.description %></p>
+                                                   </div>
+                                                </div>
+                                              
+                                          </div>
+                                      </li>
+
+                                   
+                                     <% for(var sl = 0; sl < slider.slides.length; sl++){%>
+
+                                       <%if(slider.slides[sl].section === 'sec0'){%> 
+
+                                          <%if(slider.slides[sl].slide_type === 'basic'){%> 
+
+                                           <li style="display: none;"><!--First LI always intro-->
+                                                <div class="panel panel-slider">
+                                                   <div class="panel-header">
+                                                        <div class="col-lg-12">
+                                                           <h1 style="color:black;"><input type="text" name="panelName" readonly value="<%=slider.slides[sl].slide_name%>" style="border-style: none;"></h1>
+                                                        </div>
+                                                     </div>
+
+                                                         <div class="panel-body">
+                                                            <div class="col-lg-12">
+                                                               <p><%=slider.slides[sl].content %></p>
+                                                         </div>
+                                                      </div>
+                                                   <div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button></div>        
+                                                </div>
+                                            </li>
+
+                                            <%}else if(slider.slides[sl].slide_type === 'video'){%>
+
+                                             <li style="display: none;"><!--First LI always intro-->
+                                                   <div class="panel panel-slider">
+
+                                                         <div class="panel-header">
+                                                            <div class="col-lg-12">
+                                                               <h1 style="color:black;"><input type="text" name="panelName" readonly value="<%=slider.slides[sl].slide_name%>" style="border-style: none;"></h1>
+                                                            </div>
+                                                         </div>
+
+                                                         <div class="panel-body" style="height: 400px;margin-left: 10px;margin-right: 10px;" id='videoPanel'>
+                                                                 <iframe width='100%' height='100%' src="<%=slider.slides[sl].content %>"></iframe>  
+                                                               
+                                                         </div>
+                                             
+                                                    </div>
+                                             
+                                          
+                                              </li>
+                                            <%}%>
+                                       <%}%>
+                                     <%}%>
+                           </ul>
+                        </div>
+                     </div><!--end1-->
+
+                                                     <%if(slider.sliderSections.length > 0){%>  
+                                                         <% for(var r=1; r < slider.sliderSections.length; r++) {%>
+                                                            <div class="tab-pane fade in" id="sec<%=r%>">
+                                                                  <div class="col-lg-12">
+                                                                <ul style="list-style: none;padding-left:0;">
+                                                                    <% for(var sl = 0; sl < slider.slides.length; sl++){%>
+                                                                     <% var sectionString = 'sec'+r;%>
+                                                                        <%if(slider.slides[sl].section === sectionString){%>
+                                                                        <%if(slider.slides[sl].slide_type === 'basic'){%> 
+
+                                                                        <li style="display: none;"><!--First LI always intro-->
+                                                                             <div class="panel panel-slider">
+                                                                                <div class="panel-header"><%=slider.slides[sl].slide_name%></div>
+                                                                                    <div class="panel-body">
+                                                                                       <div class="col-lg-12">
+                                                                                          <p><%=slider.slides[sl].content %></p>
+                                                                                       </div>
+                                                                                   </div>
+                                                                                <div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button></div>        
+                                                                              </div>
+                                                                         </li>
+
+                                                                              <%}else if(slider.slides[sl].slide_type === 'video'){%>
+
+                                                                               <li style="display: none;"><!--First LI always intro-->
+                                                                                     <div class="panel panel-slider">
+
+                                                                                           <div class="panel-header">
+                                                                                              <div class="col-lg-12">
+                                                                                                 <h1 style="color:black;"><input type="text" name="panelName" readonly value="<%=slider.slides[sl].slide_name%>" style="border-style: none;"></h1>
+                                                                                              </div>
+                                                                                           </div>
+
+                                                                                           <div class="panel-body" style="height: 400px;margin-left: 10px;margin-right: 10px;" id='videoPanel'>
+                                                                                                   <iframe width='100%' height='100%' src="<%=slider.slides[sl].content %>"></iframe>  
+                                                                                                 
+                                                                                           </div>
+                                                                               
+                                                                                          <div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button>
+                                                                                          </div>        
+                                                                                      </div>
+                                                                               
+                                                                            
+                                                                                </li>
+                                                                              <%}%> 
+                                                                     
+                                                                       <%}%>
+                                                                   <%}%>
+                                                                </ul>
+                                                            </div>
+                                                               </div><!--end<%=r%>-->                    
+                                                         <%}%>
+                                                     <%}%>
+                                      </div>
+                                  </div>
+
+                                  <div class="col-lg-12" style="padding-top: 20px;">
+
+                                      <div class="panel with-nav-tabs panel-default" style="border: 0;">
+
+                                              <div class="panel-header">
+                                                <nav class="navbar navbar-default">
+                                                <div class="container-fluid">
+                                             
+                                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+                                                      <ul class="nav navbar-nav navbar-right" style="padding-top: 10px;padding-right: 20px;">
+                                                             
+                                                         <li style="padding-right: 10px;"><i class="fa fa-arrow-circle-left" style="font-size:48px;"></i></li>
+                                                         <li style="padding-right: 10px;"><i class="fa fa-arrow-circle-right" style="font-size:48px;"></i></li>
+                                                     
+
+                                                      </ul>
+
+                                                    </div><!-- /.navbar-collapse -->
+
+                                                 </div><!-- /.container-fluid -->
+
+                                             </nav> 
+                                              </div>
+
+                                          </div>
+                                      </div>
+                              </div>
+
+
+
+
+                          </div><!--end body-->
+
+
+
+
+
+                  </div><!-- /.end panel -->
+               </div> 
+                
+            </div>
+         </div>
+
+
+       
+</section>
+
+<script src="../javascripts/jquery.js"></script>
+
+
+      <% include components/footer %>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+     
+      <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+
+        <script src="../javascripts/addSectionToSlider.js"></script>
+        <script src="../javascripts/add-slide.js"></script>
+
+      
+
+      <script src="../javascripts/youtubeLogic.js"></script>
+      <script src="../javascripts/remDelSlides.js"></script>
+
+
+
+        <script src="../javascripts/save-slide.js"></script>
+   </body>
+
+</html>

@@ -22,8 +22,9 @@
             <div class="margin">
 
                   <%for(var x=0;x < sliders.length ; x++){%>
-                     <div class="col-lg-4">
-                        <div class="panel panel-slider reg">
+                     <form role="form" action="/coursePreview" method="POST">
+                        <div class="col-lg-4">
+                           <div class="panel panel-slider reg">
                                      
                                        <div class="panel-body" style="height: 420px;">
                                              <div class="col-lg-12">
@@ -31,24 +32,29 @@
                                              </div>
 
                                              <div class="col-lg-12" style="padding-top: 15px;max-height: 100px;" >
-                                                <h5 style="display:inline;color: black;"><%= sliders[x].name %></h5> - <h6 style="display:inline;"><%= sliders[x].description %></h6>
+                                                <h5 style="display:inline;color: black;"><%= sliders[x].name %></h5> - <h6 style="display:inline;color: green;"><%= sliders[x].description %></h6>
                                                 <hr>
                                              </div>
 
                                              <div class="col-lg-12">
                                                 <img class="profile-img" src="/img/annon_user.jpg"
                                                    alt="">
-                                                <span>Author - </span>
-                                                <h3 style="color: black;"><a><%= sliders[x].author %></a></h3>
+                                                <div class="col-lg-6"><span>Author - </span>
+                                                <h3 style="color: black;"><a><%= sliders[x].author %></a></h3></div>
+                                                 <div class="col-lg-6"><span>Amount Raised - </span>
+                                                 
+                                                <h3 style="color: green;">00.00001213 <i class="fa fa-btc" aria-hidden="true" style="color: black;"></i></h3></div>
+
                                              </div>
                                        </div>
-
+                                       <input type="text" name="courseDemoID" id="courseDemoID" value="<%= sliders[x]._id %>" style="display: none;">
                                        <div class="panel-footer" style="background-color: black;">
-                                          <button class="btn btn-primary btn-lrg" style="background-color: red;font-size: 10px;">P r e v i e w</button>
+                                          <button class="btn btn-primary btn-lrg" style="background-color: red;font-size: 10px;" type="submit">P r e v i e w</button>
                                        </div>   
                                   
+                           </div>
                         </div>
-                     </div>
+                     </form>
                   <%}%>
                
 

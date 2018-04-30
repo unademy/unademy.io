@@ -8,7 +8,11 @@
 
 }
 
-
+.icons {
+      margin: 3rem 0;
+   }
+   i.cc { font-size: 4rem; display: inline-block; margin: 0 1.3rem 1.3rem 0; transition: 0.1s ease all; }
+   i.cc:hover { color: #0060BD; transform: rotate(-20deg); transform-origin: 0.49em 0.7em; }
 
 
 .hidden{

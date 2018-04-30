@@ -179,10 +179,50 @@ router.post('/editSlider', function(req, res){
         }
 
 
+});
+
+
+
+
+
+router.post('/coursePreview', function(req, res){
+  
+         
+
+
+        if(!req.user){
+
+              Slider.findById(req.body.courseDemoID, function(err, results1) { 
+              if (err) {
+                          res.status(500).send(err)
+              }
+                 
+
+              res.render('coursePreview.ejs', { slider : results1, isLoggedIn:false });
+                    
+            }); 
+
+        }else{
+
+            Slider.findById(req.body.courseDemoID, function(err, results1) { 
+              if (err) {
+                          res.status(500).send(err)
+              }
+    
+              res.render('coursePreview.ejs', { slider : results1, user : req.user, isLoggedIn:true });
+                    
+            });   
+        }
+
+
        
-        
 
 });
+
+
+
+
+
 
 
 router.post('/addSection', function(req,res){
