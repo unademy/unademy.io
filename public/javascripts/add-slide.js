@@ -11,6 +11,14 @@ function addSlide(){
 	addBasicPanel(ul,activeSectionName);
 }	
 
+function addVideo(){
+	var activeSection = getActiveSection();
+	var activeSectionName = getActiveSectionName(activeSection);
+
+	var ul = getActiveSectionsUL(activeSection);
+
+	addVideoPanel(ul,activeSectionName);
+}
 
 function getActiveSectionName(sec){
 	var secName = 'sec'+sec;
@@ -80,4 +88,58 @@ function addBasicPanel(ul,activeSectionName){
 
 
 
-   
+  function addVideoPanel(ul,activeSectionName){
+
+	var id = createPanelIdentifier(ul);	
+
+	window.alert('activeSectionName '+ activeSectionName);
+
+	window.alert('Identifier='+id);
+
+	var idString = 'vid'+id+activeSectionName;
+
+	var vidId = 'vidArea'+id+activeSectionName;
+
+	 $(ul).append("<li id='"+idString+"'>"+
+	 				"<div class='panel panel-slider'>"+
+						"<div class='panel-header'>"+
+						"<h1 style='color:black;'>"+
+							"<input type='text' class='slideName' name='slideName' placeholder='Slider Name Here'></input></h1>"+
+						"</div>"+
+
+						"<div class='panel-body' style='height: 400px;margin-left: 10px;margin-right: 10px;' id='"+vidId+"'></div>"+	
+
+							"<div class='panel-footer'>"+
+								"<div class='col-lg-12'>"+
+									"<div class='row'>"+
+										"<div class='col-lg-1'><button class='btn btn-primary btn-lrg' onClick='saveVideoSlider("+idString+")'>Save</button></div>"+
+
+										"<div class='col-lg-5 col-lg-offset-3'><div class='input-group'>"+
+												"<input type='text' class='form-control' placeholder='Embeded Link' name='embedVideoLink' id='embedVideoLink'>"+
+												"<span class='input-group-btn'>"+
+													"<button type='button' onClick=addEmbedded("+idString+",'"+vidId+"'); class='btn btn-danger'>Youtube</button>"+
+												"</span>"+
+											"</div>"+
+										"</div>"+
+
+										"<div class='col-lg-2'><div class='col-lg-2'><button class='btn btn-warning'>Upload MP4</button></div></div>"+
+										"<div class='col-lg-1'><div class='col-lg-2'><button class='btn btn-danger' onClick='remove(thisPanel)'><i class='fa fa-trash fa-6' aria-hidden='true'></i></button></div></div>"+	
+
+									"</div>"+
+								"</div>"+
+							"</div>"+
+						"</div>"+	
+				    "</li>");                			
+								              										           	        							          						      
+}
+
+
+
+ 
+                                             
+                                            
+
+                             
+                                             
+                                               
+

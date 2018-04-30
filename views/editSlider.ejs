@@ -27,7 +27,6 @@
 
                   <div class="panel with-nav-tabs panel-default" style="border: 1;">
                            
-
                      <div class="panel-header">
                         <nav class="navbar navbar-default">
                             <div class="container-fluid">
@@ -78,25 +77,80 @@
                               </div><!-- /.navbar-collapse -->
                            </div><!-- /.container-fluid -->
                         </nav> 
-                     </div><!-- /.end panel-header -->
+               </div><!-- /.end panel-header -->
 
 
-               <div class="panel-body" style="border: 1;height: 450px;"><!--begining outer body 1-->
+               <div class="panel-body" style="border: 1;height: 550px;overflow: auto;"><!--begining outer body 1-->
 
                   <div class="tab-content" id='tabContent'>
 
                      <div class="tab-pane fade in active" id="sec0">
                         <div class="col-lg-12">
                            <ul style="list-style: none;padding-left:0;">
+
                                       <li><!--First LI always intro-->
                                           <div class="panel panel-slider">
-                                             <div class="panel-header">Introduction</div>
-                                                   <div class="panel-body" style="height: 450px;">
-                                                      <div class="col-lg-12">
+                                             <div class="panel-header">
+                                          
+                                             <div class="col-lg-12">
+                                                <h1 style="color:black;">Introduction</h1>
+                                             </div>
+
+                                             </div>
+                                                   <div class="panel-body" style="height: 400px;">
+                                                   <div class="col-lg-12">
+                                                       <div class="col-lg-6 center-block" style="float: none;">
+                                                          <img src="<%= slider.images[0].cloud_meta[0].url %>">
+                                                       </div>
+                                                   </div>
+                                                      <div class="col-lg-12" style="padding-top: 10px; font-size: 15px;">
                                                          <p><%= slider.description %></p>
                                                    </div>
                                                 </div>
                                              <div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Intro</button></div>        
+                                          </div>
+                                      </li>
+
+                                    <li id="thisPanel"><!--First LI always intro-->
+                                          <div class="panel panel-slider" id='panelTest'>
+
+                                             <div class="panel-header">
+                                                <div class="col-lg-12">
+                                                   <h1 style="color:black;"><input type="text" name="panelName" placeholder="Slider Name Here" style="border-style: none;"></h1>
+                                                </div>
+                                             </div>
+
+                                             <div class="panel-body" style="height: 400px;margin-left: 10px;margin-right: 10px;" id='videoPanel'>
+                                                       
+                                                   
+                                             </div>
+                                             
+                                             <div class="panel-footer">
+                                                <div class="col-lg-12">
+                                                   <div class="row">
+                                                      <div class="col-lg-1"> <button class="btn btn-primary btn-lrg" onClick="saveThisSlider(thisPanel)">Save</button></div>
+                                                      <div class="col-lg-5 col-lg-offset-3">    
+                                                             <div class="input-group">
+                                                                  <input type="text" class="form-control" placeholder="Embeded Link" name="embedVideoLink" id="embedVideoLink">
+                                                                  <span class="input-group-btn">
+                                                                     <button type="button" onClick="addEmbedded();" class="btn btn-danger">Youtube</button>
+                                                                     </span>
+                                                            </div>
+                                                      </div>
+                                                      <div class="col-lg-2">
+                                                          <div class="col-lg-2"><button class="btn btn-warning">Upload MP4</button>
+                                                          </div>
+                                                       
+                                                      </div>
+                                                       <div class="col-lg-1">
+                                       
+                                                           <div class="col-lg-2"><button class="btn btn-danger" onClick="remove(thisPanel)"><i class="fa fa-trash fa-6" aria-hidden="true"></i></button>
+                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+
+                                             </div>        
                                           </div>
                                       </li>
 
@@ -154,7 +208,7 @@
                                       </div>
                                   </div>
 
-                                  <div class="col-lg-12" style="padding-top: 100px;">
+                                  <div class="col-lg-12" style="padding-top: 20px;">
 
                                       <div class="panel with-nav-tabs panel-default" style="border: 0;">
 
@@ -201,25 +255,38 @@
 
                   </div><!-- /.end panel -->
                </div> 
-                     <%= slider %>
-                 
-            
+                
             </div>
          </div>
 
 
-       
 
-
+<input type="text" name="authorInput" value="<%= user.username %>"  id='authorInput' style='display: none;'></ipnut>
+<input type="text" name="parentName" value="<%= slider.name %>"  id='parentName' style='display: none;'></ipnut>
        
 </section>
 
-      <% include components/footer %>
-      <script src="../javascripts/home-controller.js"></script>
+<script src="../javascripts/jquery.js"></script>
 
-        <script src="../javascripts/slide-editor.js"></script>
+
+      <% include components/footer %>
+
+     
+      <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+
         <script src="../javascripts/addSectionToSlider.js"></script>
         <script src="../javascripts/add-slide.js"></script>
+
+      
+
+      <script src="../javascripts/youtubeLogic.js"></script>
+      <script src="../javascripts/remDelSlides.js"></script>
+
+
 
         <script src="../javascripts/save-slide.js"></script>
    </body>

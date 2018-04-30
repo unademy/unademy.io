@@ -189,7 +189,6 @@ router.post('/editSlider', function(req, res){
 
 
 
-
 router.post('/addSection', function(req,res){
       
 
@@ -212,12 +211,11 @@ router.post('/addSection', function(req,res){
 
 router.post('/saveSlide', function(req,res){
       
-
-
+  
   
       var searchForSlider = req.body.slider;
       
-   
+    console.log(req.body)
 
       var name    = req.body.slide_name;
       var content = req.body.content;
@@ -230,14 +228,12 @@ router.post('/saveSlide', function(req,res){
                       slide_name:name,
                       content:content,
                       author:author,
-                      type:type,
+                      slide_type:type,
                       section:section
       }
 
       console.log(slide);
-                      
-      console.log(searchForSlider);
-            
+  
        Slider.findOne({ name: searchForSlider }, function(err, slider) {
                 if (err) throw err;
 
