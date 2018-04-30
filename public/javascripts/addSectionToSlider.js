@@ -2,7 +2,8 @@ var counter = 1;
 var modCounter = 1;
 
 
-function addSection(){
+//pass this the slider id so we can update THAT sliders sections
+function addSection(courseID){
 
 
 
@@ -35,6 +36,9 @@ function addSection(){
 			$("#tabContent").append("<div id='sec"+xyr+"' class='tab-pane fade in active' id='sec"+xyr+">"+
 									"<div class='col-lg-12' style='margin-bottom:40px;'>"+
 									"<ul style='padding-left: 0;list-style-type: none;' id='sec"+xyr+"panelList'>"+
+									"<li id='placeholder'>"+
+                                      
+                                    "</li>"+
 									"</ul>"+
 									"</div>"+
 									"</div>");
@@ -53,7 +57,8 @@ function addSection(){
 	
      var sectionList = {
 
-     	sects:sections
+     	sects:sections,
+     	id:courseID
 
      }
 

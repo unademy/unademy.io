@@ -160,8 +160,6 @@ router.get('/about', function(req, res, next) {
 
 
 
-
-
 router.post('/editSlider', function(req, res){
   
      
@@ -187,12 +185,9 @@ router.post('/editSlider', function(req, res){
 });
 
 
-
-
 router.post('/addSection', function(req,res){
       
 
-      console.log('addddd sectioms');
 
       console.log(req.body);
 
