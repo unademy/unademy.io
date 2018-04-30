@@ -1,0 +1,241 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+ <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+          <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tron Slide</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li><a href="/home">Home</a></li>
+        <li><a href="/mySlides">My Sliders</a></li>
+        <li class="active"><a href="/mySlides">Editing Slider</a></li>
+        <li><a href="/liveSlides">Live Slides</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Info <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+        <li><a href="#">Who We Are</a></li>
+        <li><a href="#">Why TronSlides ?</a></li>
+        <li><a href="#">More Information and Helpful Links</a></li>
+           
+          </ul>
+        </li>
+      </ul>
+       <ul class="nav navbar-nav navbar-right">
+			<form class="form-inline" style="padding-top: 8px;">
+				<input type="text" class="form-control" value="Anonymous" id='authorInput' name='authorInput'>			
+			</form>	
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li><a href="/login">Sign In</a></li>
+       <li><a href="/signup">Sign Up</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<body>
+
+<div class='container'>
+
+<div class="row">
+    <div class="col-lg-12"><h1>Currently Editing <b style="color: green;"><%= slider.name %></b> Slider</h1></div>
+</div>
+
+<div class="col-lg-12">
+    <div class="panel with-nav-tabs panel-default" style="border: 0;">
+        <div class="panel-header">
+            <nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav" id='sectionList'>
+
+		                    <li class="active"><a href="#sec0" data-toggle="tab">Introduction</a></li>
+
+		                          	<%if(slider.sliderSections.length > 0){%>
+		                          		
+		                          
+		                          		<% for(var r=1; r < slider.sliderSections.length; r++) {%>
+		                          			
+		                          			<li><a href="#sec<%=r%>" data-toggle="tab"><%= slider.sliderSections[r]%></a></li>
+
+		                          		<%}%>
+
+		                          	<%}%>
+		                          
+						    </ul>
+
+							    <ul class="nav navbar-nav navbar-right" style="padding-top: 7px;">
+
+							      		<div class="form-inline">
+											    <input type="text" class="form-control" placeholder="New Section" id='sectionName' name='sectionName'>
+											    <button class="btn btn-outline-success my-2 my-sm-0" onClick="addSection('<%= slider.id %>')">+Section</button>
+										</div>	
+
+							    </ul>
+						    </div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav> 
+                </div>
+
+
+                <div class="panel-body" style="border: 0;"><!--begining outer body 1-->
+                    <div class="tab-content" id='tabContent'>
+                        <div class="tab-pane fade in active" id="sec0">
+	                     	<div class="col-lg-12">
+							    <ul style="list-style: none;padding-left:0;">
+							        <li><!--First LI always intro-->
+							          	<div class="panel panel-slider">
+								           	<div class="panel-header">Introduction</div>
+								           			<div class="panel-body">
+								              			<div class="col-lg-12">
+								                			<p><%= slider.description %></p>
+								              		</div>
+									            </div>
+								           	<div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Intro</button></div>        
+							          	</div>
+							        </li>
+
+							       
+							       <% for(var sl = 0; sl < slider.slides.length; sl++){%>
+							        	
+
+							        	<%if(slider.slides[sl].section === 'sec0'){%> 
+
+							        		 <li><!--First LI always intro-->
+									          	<div class="panel panel-slider">
+										           	<div class="panel-header"><%=slider.slides[sl].slide_name%></div>
+										           			<div class="panel-body">
+										              			<div class="col-lg-12">
+										                			<p><%=slider.slides[sl].content %></p>
+										              		</div>
+											            </div>
+										           	<div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button></div>        
+									          	</div>
+									        </li>
+
+
+							        	<%}%>
+							       <%}%>
+							        
+
+							    </ul>
+							</div>
+                   		</div><!--end1-->
+
+				        <%if(slider.sliderSections.length > 0){%>  
+				            <% for(var r=1; r < slider.sliderSections.length; r++) {%>
+				            	<div class="tab-pane fade in" id="sec<%=r%>">
+			                     	<div class="col-lg-12">
+									    <ul style="list-style: none;padding-left:0;">
+									        <% for(var sl = 0; sl < slider.slides.length; sl++){%>
+									        	<% var sectionString = 'sec'+r;%>
+										       	<%if(slider.slides[sl].section === sectionString){%> 
+										        	<li><!--First LI always intro-->
+												        <div class="panel panel-slider">
+													        <div class="panel-header"><%=slider.slides[sl].slide_name%></div>
+													           	<div class="panel-body">
+													              	<div class="col-lg-12">
+													                	<p><%=slider.slides[sl].content %></p>
+													              	</div>
+														        </div>
+													        <div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button></div>        
+												         </div>
+												    </li>
+										        <%}%>
+										    <%}%>
+									    </ul>
+									</div>
+		                        </div><!--end<%=r%>-->              		
+				            <%}%>
+				        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="padding-top: 100px;">
+
+        <div class="panel with-nav-tabs panel-default" style="border: 0;">
+
+                <div class="panel-header">
+                	<nav class="navbar navbar-default">
+						<div class="container-fluid">
+					
+						    <!-- Collect the nav links, forms, and other content for toggling -->
+						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+						      <ul class="nav navbar-nav navbar-left" style="padding-top: 7px;">
+						      	
+						       	<li style="padding-right: 10px;"><i class="fa fa-arrow-circle-left" style="font-size:48px;"></i></li>
+						       	<li style="padding-right: 10px;"><i class="fa fa-arrow-circle-right" style="font-size:48px;"></i></li>
+						    	<li style="padding-top:10px;font-size: 16px;">1/1</li>
+						      </ul>
+
+						      <ul class="nav navbar-nav navbar-right" style="padding-top: 7px;">
+						      	
+						       	<li style="padding-right: 10px;"><button class='btn btn-danger' onClick='addVideo()'>+Video</button></li>						
+						        <li><button class='btn btn-primary' onClick='addSlide()'>+Slide</button></li>
+
+						      </ul>
+
+						    </div><!-- /.navbar-collapse -->
+
+						 </div><!-- /.container-fluid -->
+
+					</nav> 
+                </div>
+
+            </div>
+        </div>
+
+        <input type="text" name="parentName" value="<%= slider.name %>" style='display: none;' id='parentName'></ipnut>
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous">
+            
+        </script>
+
+        <script src="../javascripts/jquery.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+        <script src="../javascripts/home-controller.js"></script>
+
+        <script src="../javascripts/slide-editor.js"></script>
+        <script src="../javascripts/addSectionToSlider.js"></script>
+        <script src="../javascripts/add-slide.js"></script>
+
+        <script src="../javascripts/save-slide.js"></script>
+
+
+        <script src="../javascripts/car.js"></script>
+</body>
+</html>

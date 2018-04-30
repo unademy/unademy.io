@@ -1,0 +1,158 @@
+
+<div class='container'>
+
+<div class="row">
+    <div class="col-lg-12"><h1>Currently Editing <b style="color: green;"><%= slider.name %></b> Slider</h1></div>
+</div>
+
+<div class="col-lg-12">
+
+    <div class="panel with-nav-tabs panel-default" style="border: 0;">
+    	
+        <div class="panel-header">
+            <nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav" id='sectionList'>
+
+		                    <li class="active"><a href="#sec0" data-toggle="tab">Introduction</a></li>
+
+		                          	<%if(slider.sliderSections.length > 0){%>
+		                          		
+		                          
+		                          		<% for(var r=1; r < slider.sliderSections.length; r++) {%>
+		                          			
+		                          			<li><a href="#sec<%=r%>" data-toggle="tab"><%= slider.sliderSections[r]%></a></li>
+
+		                          		<%}%>
+
+		                          	<%}%>
+		                          
+						    </ul>
+
+							    <ul class="nav navbar-nav navbar-right" style="padding-top: 7px;">
+
+							      		<div class="form-inline">
+											    <input type="text" class="form-control" placeholder="New Section" id='sectionName' name='sectionName'>
+											    <button class="btn btn-outline-success my-2 my-sm-0" onClick="addSection('<%= slider.id %>')">+Section</button>
+										</div>	
+
+							    </ul>
+						    </div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav> 
+                </div>
+
+
+                <div class="panel-body" style="border: 0;"><!--begining outer body 1-->
+                    <div class="tab-content" id='tabContent'>
+                        <div class="tab-pane fade in active" id="sec0">
+	                     	<div class="col-lg-12">
+							    <ul style="list-style: none;padding-left:0;">
+							        <li><!--First LI always intro-->
+							          	<div class="panel panel-slider">
+								           	<div class="panel-header">Introduction</div>
+								           			<div class="panel-body">
+								              			<div class="col-lg-12">
+								                			<p><%= slider.description %></p>
+								              		</div>
+									            </div>
+								           	<div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Intro</button></div>        
+							          	</div>
+							        </li>
+
+							       
+							       <% for(var sl = 0; sl < slider.slides.length; sl++){%>
+							        	
+
+							        	<%if(slider.slides[sl].section === 'sec0'){%> 
+
+							        		 <li><!--First LI always intro-->
+									          	<div class="panel panel-slider">
+										           	<div class="panel-header"><%=slider.slides[sl].slide_name%></div>
+										           			<div class="panel-body">
+										              			<div class="col-lg-12">
+										                			<p><%=slider.slides[sl].content %></p>
+										              		</div>
+											            </div>
+										           	<div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button></div>        
+									          	</div>
+									        </li>
+
+
+							        	<%}%>
+							       <%}%>
+							        
+
+							    </ul>
+							</div>
+                   		</div><!--end1-->
+
+				        <%if(slider.sliderSections.length > 0){%>  
+				            <% for(var r=1; r < slider.sliderSections.length; r++) {%>
+				            	<div class="tab-pane fade in" id="sec<%=r%>">
+			                     	<div class="col-lg-12">
+									    <ul style="list-style: none;padding-left:0;">
+									        <% for(var sl = 0; sl < slider.slides.length; sl++){%>
+									        	<% var sectionString = 'sec'+r;%>
+										       	<%if(slider.slides[sl].section === sectionString){%> 
+										        	<li><!--First LI always intro-->
+												        <div class="panel panel-slider">
+													        <div class="panel-header"><%=slider.slides[sl].slide_name%></div>
+													           	<div class="panel-body">
+													              	<div class="col-lg-12">
+													                	<p><%=slider.slides[sl].content %></p>
+													              	</div>
+														        </div>
+													        <div class="panel-footer"><button class="btn btn-primary btn-lrg">Edit Slide</button></div>        
+												         </div>
+												    </li>
+										        <%}%>
+										    <%}%>
+									    </ul>
+									</div>
+		                        </div><!--end<%=r%>-->              		
+				            <%}%>
+				        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="padding-top: 100px;">
+
+        <div class="panel with-nav-tabs panel-default" style="border: 0;">
+
+                <div class="panel-header">
+
+                	<nav class="navbar navbar-default">
+						<div class="container-fluid">
+					
+						    <!-- Collect the nav links, forms, and other content for toggling -->
+						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+						      <ul class="nav navbar-nav navbar-left" style="padding-top: 7px;">
+						      	
+						       	<li style="padding-right: 10px;"><i class="fa fa-arrow-circle-left" style="font-size:48px;"></i></li>
+						       	<li style="padding-right: 10px;"><i class="fa fa-arrow-circle-right" style="font-size:48px;"></i></li>
+						    	<li style="padding-top:10px;font-size: 16px;">1/1</li>
+						      </ul>
+
+						      <ul class="nav navbar-nav navbar-right" style="padding-top: 7px;">
+						      	
+						       	<li style="padding-right: 10px;"><button class='btn btn-danger' onClick='addVideo()'>+Video</button></li>						
+						        <li><button class='btn btn-primary' onClick='addSlide()'>+Slide</button></li>
+
+						      </ul>
+
+						    </div><!-- /.navbar-collapse -->
+
+						 </div><!-- /.container-fluid -->
+
+					</nav> 
+                </div>
+
+            </div>
+        </div>
+
+        <input type="text" name="parentName" value="<%= slider.name %>" style='display: none;' id='parentName'></ipnut>

@@ -164,18 +164,31 @@ router.get('/about', function(req, res, next) {
 
 router.post('/editSlider', function(req, res){
   
+     
+        if(!req.user){
+              res.render('login.ejs', { isLoggedIn: false });
 
-      Slider.findById(req.body.id, function(err, results1) { 
-      if (err) {
-                res.status(500).send(err)
-      }
-      console.log('results '+results1);
-      res.render('editSlider.ejs', { slider : results1});
-            
-    });   
+        }else{
+
+            Slider.findById(req.body.id, function(err, results1) { 
+              if (err) {
+                          res.status(500).send(err)
+              }
     
+              res.render('editSlider.ejs', { slider : results1, user : req.user, isLoggedIn:true });
+                    
+            });   
+        }
+
+
+       
+        
 
 });
+
+
+
+
 
 router.post('/addSection', function(req,res){
       
