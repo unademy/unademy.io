@@ -1,12 +1,11 @@
-
-
-
 function addSlide(){
 
 	var activeSection = getActiveSection();
 	var activeSectionName = getActiveSectionName(activeSection);
 
 	var ul = getActiveSectionsUL(activeSection);
+
+	window.alert(ul.length);
 
 	addBasicPanel(ul,activeSectionName);
 }	
@@ -34,7 +33,6 @@ function getActiveSectionsUL(sec){
 	return ul;
 
 }
-
 
 function getActiveSection(){
 
@@ -67,11 +65,6 @@ function createPanelIdentifier(ul){
 function addBasicPanel(ul,activeSectionName){
 
 	var id = createPanelIdentifier(ul);	
-
-	window.alert('activeSectionName '+ activeSectionName);
-
-	window.alert('Identifier='+id);
-
 	var idString = 'basicPanel'+id+activeSectionName;
 
 
@@ -85,7 +78,6 @@ function addBasicPanel(ul,activeSectionName){
 				    "</li>");                			
 								              										           	        							          						      
 }
-
 
 
   function addVideoPanel(ul,activeSectionName){
@@ -112,12 +104,12 @@ function addBasicPanel(ul,activeSectionName){
 							"<div class='panel-footer'>"+
 								"<div class='col-lg-12'>"+
 									"<div class='row'>"+
-										"<div class='col-lg-1'><button class='btn btn-primary btn-lrg' onClick='saveVideoSlider("+idString+")'>Save</button></div>"+
+										"<div class='col-lg-1'><button class='btn btn-primary btn-lrg' onClick='saveVideoSlider("+idString+");this.disabled=true;'>Save</button></div>"+
 
 										"<div class='col-lg-5 col-lg-offset-3'><div class='input-group'>"+
 												"<input type='text' class='form-control' placeholder='Embeded Link' name='embedVideoLink' id='embedVideoLink'>"+
 												"<span class='input-group-btn'>"+
-													"<button type='button' onClick=addEmbedded("+idString+",'"+vidId+"'); class='btn btn-danger'>Youtube</button>"+
+													"<button type='button' onClick=addEmbedded("+idString+",'"+vidId+"') class='btn btn-danger'>Youtube</button>"+
 												"</span>"+
 											"</div>"+
 										"</div>"+

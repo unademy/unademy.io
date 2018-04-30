@@ -2,7 +2,9 @@ var counter = 1;
 var modCounter = 1;
 
 
-function addSection(sliderId){
+function addSection(){
+
+
 
 	var newName = document.getElementById("sectionName");
 	var sectionsList = document.getElementById("sectionList").getElementsByTagName("li");
@@ -18,22 +20,29 @@ function addSection(sliderId){
 					sectionsList[a].classList.remove("active");
 		}
 
-		for(var a=0;a<tabs.length;a++){
-					sectionsList[a].classList.remove("active");
+			for(var a=0;a<sectionsList.length;a++){
+					tabs[a].classList.remove("active");
 		}
+
+	
 	
 	    $("#sectionList").append("<li class='active'><a href='#sec"+sectionsList.length+"' data-toggle='tab'>"+newName.value+"</a></li>");
 
 	  
 	    	var xyr = sectionsList.length-1;
 
+
 			$("#tabContent").append("<div id='sec"+xyr+"' class='tab-pane fade in active' id='sec"+xyr+">"+
 									"<div class='col-lg-12' style='margin-bottom:40px;'>"+
-									"<ul style='padding-left: 0;list-style-type: none;' id='sec"+xyr+"panelList'></ul>"+
+									"<ul style='padding-left: 0;list-style-type: none;' id='sec"+xyr+"panelList'>"+
+									"</ul>"+
 									"</div>"+
 									"</div>");
 
-			
+				
+
+                                      
+
 	}
 
 	var courseSectionUpdater = document.getElementById("sectionList").getElementsByTagName("a");
@@ -44,7 +53,6 @@ function addSection(sliderId){
 	
      var sectionList = {
 
-     	id:sliderId,
      	sects:sections
 
      }

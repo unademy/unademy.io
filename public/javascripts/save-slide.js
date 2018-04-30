@@ -35,6 +35,7 @@ function saveSlide(idString){
 
 function saveVideoSlider(panel){
 
+	
 
 	var authorInput = document.getElementById('authorInput').value;
 	var parentName  = document.getElementById('parentName').value;
